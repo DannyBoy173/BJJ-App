@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".halfguard">
+
+    <LinearLayout
+        android:id="@+id/subchapters_topbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="@string/Back"
+            android:onClick="goToMain"
+            android:src="?attr/homeAsUpIndicator" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" >
+        </Space>
+
+        <TextView
+            android:id="@+id/subchapters_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:text="@string/Half_Guard">
+        </TextView>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" >
+        </Space>
+
+        <Space
+            android:layout_width="50dp"
+            android:layout_height="50dp" >
+        </Space>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/subchapters_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/subchapters_topbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/halfgrd_bottom_btn"
+                android:layout_width="200dp"
+                android:layout_height="75dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/Bottom_Strategies" />
+            <Button
+                android:id="@+id/halfgrd_top_btn"
+                android:layout_width="200dp"
+                android:layout_height="75dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/Top_Strategies" />
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

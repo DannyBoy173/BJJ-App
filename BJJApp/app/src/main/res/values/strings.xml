@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">BJJ App</string>
+    <string name="chapters">Chapters</string>
+    <string name="sub_chapters">Sub Chapters</string>
+
+    <string name="Calendar">Calendar</string>
+    <string name="Settings">Settings</string>
+    <string name="Back">Back</string>
+    <string name="User_Guide">User Guide</string>
+    <string name="Notifications">NOTIFICATIONS</string>
+
+    <string name="Mount">Mount</string>
+    <string name="Side_Mount">Side Mount</string>
+    <string name="Guard">Guard</string>
+    <string name="Half_Guard">Half Guard</string>
+    <string name="Back_Mount">Back Mount</string>
+    <string name="Leg_Locks">Leg Locks</string>
+    <string name="Standing">Standing</string>
+
+    <string name="Control">Controls</string>
+    <string name="Escapes">Standing</string>
+    <string name="Sub_Counters">Submission Counters</string>
+    <string name="Submissions">Submissions</string>
+    <string name="Passes">Passes</string>
+    <string name="Sweeps">Sweeps</string>
+    <string name="Sport_Guards">Sport Guards</string>
+    <string name="Bottom_Strategies">Bottom Strategies</string>
+    <string name="Top_Strategies">Top Strategies</string>
+    <string name="Straight_Foot_Locks">Straight Foot Locks</string>
+    <string name="Toe_Holds">Toe Holds</string>
+    <string name="Knee_Locks">Knee Locks</string>
+    <string name="Heel_Hooks">Heel Hooks</string>
+    <string name="Clinch">Clinch</string>
+    <string name="Takedowns">Takedowns</string>
+    <string name="Weapon_Def">Weapon Defences</string>
+    <string name="Front_Attack_Def">Front Attack Defences</string>
+    <string name="Rear_Attack_Def">Rear Attack Defences</string>
+</resources>

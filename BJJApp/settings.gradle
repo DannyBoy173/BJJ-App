@@ -1,0 +1,2 @@
+rootProject.name='BJJ App'
+include ':app'

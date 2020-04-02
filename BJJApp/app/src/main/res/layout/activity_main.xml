@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/chapters_topbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/calendar_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@android:drawable/ic_menu_today"
+            android:onClick="goToCalendar"
+            android:contentDescription="@string/Calendar" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" >
+        </Space>
+
+        <TextView
+            android:id="@+id/chapters_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:text="@string/chapters">
+        </TextView>
+
+        <Space
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1" >
+    </Space>
+
+        <ImageButton
+            android:id="@+id/setings_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@android:drawable/ic_menu_manage"
+            android:onClick="goToSettings"
+            android:contentDescription="@string/Settings" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/chapters_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chapters_topbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/mount_button"
+                android:layout_width="200dp"
+                android:layout_height="75dp"
+                android:layout_marginBottom="20dp"
+                android:onClick="goToMount"
+                android:text="@string/Mount" />
+
+            <Button
+                android:id="@+id/side_mount_button"
+                android:layout_width="200dp"
+                android:layout_height="75dp"
+                android:layout_marginBottom="20dp"
+                android:onClick="goToSideMount"
+                android:text="@string/Side_Mount" />
+            <Button
+                android:id="@+id/guard_button"
+                android:layout_width="200dp"
+                android:layout_height="75dp"
+                android:layout_marginBottom="20dp"
+                android:onClick="goToGuard"
+                android:text="@string/Guard" />
+            <Button
+                android:id="@+id/half_guard_button"
+                android:layout_width="200dp"
+                android:layout_height="75dp"
+                android:layout_marginBottom="20dp"
+                android:onClick="goToHalfGuard"
+                android:text="@string/Half_Guard" />
+            <Button
+                android:id="@+id/back_mount_button"
+                android:layout_width="200dp"
+                android:layout_height="75dp"
+                android:layout_marginBottom="20dp"
+                android:onClick="goToBackMount"
+                android:text="@string/Back_Mount" />
+            <Button
+                android:id="@+id/leg_locks_button"
+                android:layout_width="200dp"
+                android:layout_height="75dp"
+                android:layout_marginBottom="20dp"
+                android:onClick="goToLegLocks"
+                android:text="@string/Leg_Locks" />
+            <Button
+                android:id="@+id/standing_button"
+                android:layout_width="200dp"
+                android:layout_height="75dp"
+                android:layout_marginBottom="20dp"
+                android:onClick="goToStanding"
+                android:text="@string/Standing" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
