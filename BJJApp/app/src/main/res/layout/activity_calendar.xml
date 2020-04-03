@@ -49,33 +49,51 @@
 
     </LinearLayout>
 
+
+    <TextView
+        android:id="@+id/setAlarmText"
+        android:layout_below="@id/chapters_topbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add a new training time:" />
+
     <NumberPicker
         android:id="@+id/dayPicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/chapters_topbar" />
+        android:layout_below="@id/setAlarmText"
+        android:layout_marginTop="16dp" />
 
     <TimePicker
         android:id="@+id/timePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/chapters_topbar"
+        android:layout_below="@id/setAlarmText"
         android:layout_toRightOf="@id/dayPicker"
         android:timePickerMode="spinner" />
+
 
     <Button
         android:id="@+id/set_notification_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/timePicker"
+        android:layout_below="@id/setAlarmText"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="82dp"
+        android:layout_toRightOf="@id/timePicker"
         android:text="Set" />
 
-    <Button
-        android:id="@+id/cancel_btn"
+    <TextView
+        android:id="@+id/TrainingTimetable"
+        android:layout_below="@id/timePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/set_notification_btn"
-        android:text="Cancel" />
+        android:text="View your training timetable:" />
 
+    <ListView
+        android:id="@+id/alarmListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TrainingTimetable"/>
 
 </RelativeLayout>
