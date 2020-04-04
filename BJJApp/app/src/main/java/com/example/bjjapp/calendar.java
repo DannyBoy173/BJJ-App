@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,31 +16,52 @@ import android.widget.NumberPicker;
 import android.widget.TimePicker;
 import android.widget.Toast;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 
 public class calendar extends AppCompatActivity {
     private TimePicker picker;
-    private int myCode = 1;
+    private int myCode = 1; //alarm codes
+
+    //shared preference variables
+    public static final String PREFS = "sharedPrefs";
+    public static final String ALARMS = "StoredAlarmsText";
+    public static final String IDS = "StoredAlarmIDs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
+        //load the shared prefs to lists
+        //they need to be stored as strings then split into lists in order to keep the correct order
+        SharedPreferences sharedPreferences = getSharedPreferences(PREFS, MODE_PRIVATE);
+        final String AlarmIDsStr = sharedPreferences.getString(IDS, "");
+        ArrayList<String> tempalarmIDs = new ArrayList<String>();
+        if (!AlarmIDsStr.isEmpty()){
+            tempalarmIDs = new ArrayList<>(Arrays.asList(AlarmIDsStr.split(";")));
+        }
+        final String datasourceStr = sharedPreferences.getString(ALARMS, "");
+        ArrayList<String> tempdatasource = new ArrayList<String>();
+        if (!datasourceStr.isEmpty()){
+            tempdatasource = new ArrayList<>(Arrays.asList(datasourceStr.split(";")));
+        }
+
+        final ArrayList<String> alarmIDs = tempalarmIDs; //list storing alarm IDs
+        final ArrayList<String> datasource = tempdatasource; //list storing alarm text (days and times)
+
         //set up alarm list view
-        final ArrayList<Integer> alarmIDs= new ArrayList<Integer>(); //list keeping track of alarm IDs
-        final ArrayList<String> datasource= new ArrayList<String>();
         final ArrayAdapter<String> adapter = new ArrayAdapter<String> (getApplicationContext(),R.layout.alarm_list_item,
                 R.id.alarm_list_item_text,datasource);
         ListView lv = (ListView) findViewById(R.id.alarmListView);
         lv.setAdapter(adapter);
 
-        //delete alarm
+        //delete alarm listener
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //find the alarm ID corresponding to the clicked alarm and remove it
-                int removeID = alarmIDs.get(position);
+                int removeID = Integer.parseInt(alarmIDs.get(position));
                 alarmIDs.remove(position);
                 //delete the alarm
                 AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
@@ -52,6 +75,9 @@ public class calendar extends AppCompatActivity {
                 datasource.remove(position);
                 adapter.notifyDataSetChanged();
                 Toast.makeText(getApplicationContext(), "Alarm Deleted", Toast.LENGTH_SHORT).show();
+
+                //delete the alarm from the shared preferences by saving the new lists to shared prefs
+                saveData(datasource, alarmIDs);
             }
         });
 
@@ -81,6 +107,7 @@ public class calendar extends AppCompatActivity {
                 Calendar alarmTime = Calendar.getInstance();
                 alarmTime.set(Calendar.HOUR_OF_DAY,hour);
                 alarmTime.set(Calendar.MINUTE,min);
+
                 //switch case for the day picker to set alarm day
                 String dayAsStr = "";
                 switch(day) {
@@ -126,7 +153,7 @@ public class calendar extends AppCompatActivity {
                 //create pending intent from the intent above
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),myCode,intent,PendingIntent.FLAG_UPDATE_CURRENT);
                 Toast.makeText(getApplicationContext(), "Alarm Set", Toast.LENGTH_SHORT).show();
-                alarmIDs.add(myCode); //add alarm ID to list
+                alarmIDs.add(Integer.toString(myCode)); //add alarm ID to list
                 myCode+=1;
 
                 //set up a weekly alarm for the time selected, takes pending intent as a parameter. Triggers notification weekly
@@ -135,15 +162,39 @@ public class calendar extends AppCompatActivity {
                 alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,alarmTime.getTimeInMillis(),interval,pendingIntent);
 
                 //add the alarm to the list view
-                adapter.add(dayAsStr + " - " + Integer.toString(hour) + ":" + Integer.toString(min));
+                String minStr = Integer.toString(min);
+                if (min < 10){
+                    minStr = "0"+ minStr;
+                }
+                String hourStr = Integer.toString(hour);
+                if (hour < 10){
+                    hourStr = "0"+ hourStr;
+                }
+                datasource.add(dayAsStr + " - " + hourStr + ":" + minStr);
+                adapter.notifyDataSetChanged();
+
+                //save the new alarm to the shared preferences
+                saveData(datasource, alarmIDs);
             }
         });
 
         }
 
 
+    private void saveData(ArrayList<String> datasource, ArrayList<String> alarmIDs) {
+        SharedPreferences sharedPreferences = getSharedPreferences(PREFS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        //join the lists as a string to be saved in shared prefs
+        String datasourceStr = TextUtils.join(";", datasource);
+        String alarmIDsStr = TextUtils.join(";", alarmIDs);
+        editor.putString(ALARMS, datasourceStr);
+        editor.putString(IDS, alarmIDsStr);
+        editor.commit();
+    }
+
+
     public void goToMain(View view) {
-        Intent mainIntent = new Intent(this, MainActivity.class);
-        startActivity(mainIntent);
+        finish();
     }
 }

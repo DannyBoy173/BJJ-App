@@ -18,9 +18,9 @@ public class Notification_receiver extends BroadcastReceiver {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
-                .setSmallIcon(android.R.drawable.arrow_up_float)
-                .setContentTitle("HI")
-                .setContentText(AlarmID.toString())
+                .setSmallIcon(android.R.drawable.ic_popup_reminder)
+                .setContentTitle("BJJ Training Reminder")
+                .setContentText("You have training in 1 hour")
                 .setAutoCancel(true);
 
         notificationManager.notify(AlarmID,builder.build());
