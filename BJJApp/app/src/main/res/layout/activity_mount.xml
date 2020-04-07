@@ -66,24 +66,28 @@
                 android:layout_width="200dp"
                 android:layout_height="75dp"
                 android:layout_marginBottom="20dp"
+                android:onClick="goToMntCtrls"
                 android:text="@string/Control" />
             <Button
                 android:id="@+id/mount_escapes_button"
                 android:layout_width="200dp"
                 android:layout_height="75dp"
                 android:layout_marginBottom="20dp"
+                android:onClick="goToMntEsc"
                 android:text="@string/Escapes" />
             <Button
                 android:id="@+id/mount_sub_counters"
                 android:layout_width="200dp"
                 android:layout_height="75dp"
                 android:layout_marginBottom="20dp"
+                android:onClick="goToMntCntrs"
                 android:text="@string/Sub_Counters" />
             <Button
                 android:id="@+id/mount_subs_button"
                 android:layout_width="200dp"
                 android:layout_height="75dp"
                 android:layout_marginBottom="20dp"
+                android:onClick="goToMntSubs"
                 android:text="@string/Submissions" />
 
         </LinearLayout>

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.bjjapp">
 
-    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>;
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".calendar"></activity>
+        <activity android:name=".Notes"></activity>
+        <activity android:name=".calendar" />
         <activity android:name=".settings" />
         <activity android:name=".standing" />
         <activity android:name=".leglocks" />
@@ -20,7 +21,9 @@
         <activity android:name=".guard" />
         <activity android:name=".sidemnt" />
         <activity android:name=".mount" />
-        <receiver android:name=".Notification_receiver"/>
+
+        <receiver android:name=".Notification_receiver" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

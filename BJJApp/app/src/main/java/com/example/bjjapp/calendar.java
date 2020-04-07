@@ -27,6 +27,7 @@ public class calendar extends AppCompatActivity {
     public static final String PREFS = "sharedPrefs";
     public static final String ALARMS = "StoredAlarmsText";
     public static final String IDS = "StoredAlarmIDs";
+    public static final String CODE = "StoredCurrentCode";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class calendar extends AppCompatActivity {
         //load the shared prefs to lists
         //they need to be stored as strings then split into lists in order to keep the correct order
         SharedPreferences sharedPreferences = getSharedPreferences(PREFS, MODE_PRIVATE);
+        myCode = sharedPreferences.getInt(CODE, 1);
         final String AlarmIDsStr = sharedPreferences.getString(IDS, "");
         ArrayList<String> tempalarmIDs = new ArrayList<String>();
         if (!AlarmIDsStr.isEmpty()){
@@ -77,7 +79,7 @@ public class calendar extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Alarm Deleted", Toast.LENGTH_SHORT).show();
 
                 //delete the alarm from the shared preferences by saving the new lists to shared prefs
-                saveData(datasource, alarmIDs);
+                saveData(datasource, alarmIDs, myCode);
             }
         });
 
@@ -174,20 +176,21 @@ public class calendar extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
 
                 //save the new alarm to the shared preferences
-                saveData(datasource, alarmIDs);
+                saveData(datasource, alarmIDs, myCode);
             }
         });
 
         }
 
 
-    private void saveData(ArrayList<String> datasource, ArrayList<String> alarmIDs) {
+    private void saveData(ArrayList<String> datasource, ArrayList<String> alarmIDs, int CurrentCode) {
         SharedPreferences sharedPreferences = getSharedPreferences(PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         //join the lists as a string to be saved in shared prefs
         String datasourceStr = TextUtils.join(";", datasource);
         String alarmIDsStr = TextUtils.join(";", alarmIDs);
+        editor.putInt(CODE, CurrentCode);
         editor.putString(ALARMS, datasourceStr);
         editor.putString(IDS, alarmIDsStr);
         editor.commit();

@@ -18,4 +18,18 @@ public class halfguard extends AppCompatActivity {
         Intent mainIntent = new Intent(this, MainActivity.class);
         startActivity(mainIntent);
     }
+
+    public void goToHalfGrdBottom(View view) {
+        Intent intent = new Intent(getApplicationContext(), Notes.class);
+        intent.putExtra("Chapter", "Half Guard");
+        intent.putExtra("SubChapter", "Bottom");
+        startActivity(intent);
+    }
+
+    public void goToHalfGrdTop(View view) {
+        Intent intent = new Intent(getApplicationContext(), Notes.class);
+        intent.putExtra("Chapter", "Half Guard");
+        intent.putExtra("SubChapter", "Top");
+        startActivity(intent);
+    }
 }

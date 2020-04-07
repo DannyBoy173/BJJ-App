@@ -6,6 +6,7 @@
     <string name="Calendar">Calendar</string>
     <string name="Settings">Settings</string>
     <string name="Back">Back</string>
+    <string name="Add">Add</string>
     <string name="User_Guide">User Guide</string>
     <string name="Notifications">NOTIFICATIONS</string>
 
@@ -18,7 +19,7 @@
     <string name="Standing">Standing</string>
 
     <string name="Control">Controls</string>
-    <string name="Escapes">Standing</string>
+    <string name="Escapes">Escapes</string>
     <string name="Sub_Counters">Submission Counters</string>
     <string name="Submissions">Submissions</string>
     <string name="Passes">Passes</string>

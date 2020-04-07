@@ -66,18 +66,21 @@
                 android:layout_width="200dp"
                 android:layout_height="75dp"
                 android:layout_marginBottom="20dp"
+                android:onClick="gotoBackCtrls"
                 android:text="@string/Control" />
             <Button
                 android:id="@+id/back_subs_btn"
                 android:layout_width="200dp"
                 android:layout_height="75dp"
                 android:layout_marginBottom="20dp"
+                android:onClick="gotoBackSubs"
                 android:text="@string/Submissions" />
             <Button
                 android:id="@+id/back_sub_counters_btn"
                 android:layout_width="200dp"
                 android:layout_height="75dp"
                 android:layout_marginBottom="20dp"
+                android:onClick="gotoBackCntrs"
                 android:text="@string/Sub_Counters" />
 
         </LinearLayout>

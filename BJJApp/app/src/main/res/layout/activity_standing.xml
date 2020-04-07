@@ -66,30 +66,35 @@
                 android:layout_width="200dp"
                 android:layout_height="75dp"
                 android:layout_marginBottom="20dp"
+                android:onClick="goToStdClinch"
                 android:text="@string/Clinch" />
             <Button
                 android:id="@+id/standing_takedowns_btn"
                 android:layout_width="200dp"
                 android:layout_height="75dp"
                 android:layout_marginBottom="20dp"
+                android:onClick="goToStdTakedowns"
                 android:text="@string/Takedowns" />
             <Button
                 android:id="@+id/standing_weapon_def_btn"
                 android:layout_width="200dp"
                 android:layout_height="75dp"
                 android:layout_marginBottom="20dp"
+                android:onClick="goToStdWeaponDef"
                 android:text="@string/Weapon_Def" />
             <Button
                 android:id="@+id/standing_front_attack_def_btn"
                 android:layout_width="200dp"
                 android:layout_height="75dp"
                 android:layout_marginBottom="20dp"
+                android:onClick="goToStdFrntDef"
                 android:text="@string/Front_Attack_Def" />
             <Button
                 android:id="@+id/standing_rear_attack_def_btn"
                 android:layout_width="200dp"
                 android:layout_height="75dp"
                 android:layout_marginBottom="20dp"
+                android:onClick="goToStdRearDef"
                 android:text="@string/Rear_Attack_Def" />
 
         </LinearLayout>

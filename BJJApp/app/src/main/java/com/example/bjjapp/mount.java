@@ -18,4 +18,32 @@ public class mount extends AppCompatActivity {
         Intent mainIntent = new Intent(this, MainActivity.class);
         startActivity(mainIntent);
     }
+
+    public void goToMntCtrls(View view) {
+        Intent intent = new Intent(getApplicationContext(), Notes.class);
+        intent.putExtra("Chapter", "Mount");
+        intent.putExtra("SubChapter", "Controls");
+        startActivity(intent);
+    }
+
+    public void goToMntEsc(View view) {
+        Intent intent = new Intent(getApplicationContext(), Notes.class);
+        intent.putExtra("Chapter", "Mount");
+        intent.putExtra("SubChapter", "Escapes");
+        startActivity(intent);
+    }
+
+    public void goToMntCntrs(View view) {
+        Intent intent = new Intent(getApplicationContext(), Notes.class);
+        intent.putExtra("Chapter", "Mount");
+        intent.putExtra("SubChapter", "Submission Counters");
+        startActivity(intent);
+    }
+
+    public void goToMntSubs(View view) {
+        Intent intent = new Intent(getApplicationContext(), Notes.class);
+        intent.putExtra("Chapter", "Mount");
+        intent.putExtra("SubChapter", "Submissions");
+        startActivity(intent);
+    }
 }

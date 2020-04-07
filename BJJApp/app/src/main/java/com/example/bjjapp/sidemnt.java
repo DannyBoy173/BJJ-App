@@ -18,4 +18,32 @@ public class sidemnt extends AppCompatActivity {
         Intent mainIntent = new Intent(this, MainActivity.class);
         startActivity(mainIntent);
     }
+
+    public void goToSideMntCtrls(View view) {
+        Intent intent = new Intent(getApplicationContext(), Notes.class);
+        intent.putExtra("Chapter", "Side Mount");
+        intent.putExtra("SubChapter", "Controls");
+        startActivity(intent);
+    }
+
+    public void goToSideMntEsc(View view) {
+        Intent intent = new Intent(getApplicationContext(), Notes.class);
+        intent.putExtra("Chapter", "Side Mount");
+        intent.putExtra("SubChapter", "Escapes");
+        startActivity(intent);
+    }
+
+    public void goToSideMntCntrs(View view) {
+        Intent intent = new Intent(getApplicationContext(), Notes.class);
+        intent.putExtra("Chapter", "Side Mount");
+        intent.putExtra("SubChapter", "Submission Counters");
+        startActivity(intent);
+    }
+
+    public void goToSideMntSubs(View view) {
+        Intent intent = new Intent(getApplicationContext(), Notes.class);
+        intent.putExtra("Chapter", "Side Mount");
+        intent.putExtra("SubChapter", "Submissions");
+        startActivity(intent);
+    }
 }

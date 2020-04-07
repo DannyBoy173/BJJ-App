@@ -18,4 +18,25 @@ public class backmount extends AppCompatActivity {
         Intent mainIntent = new Intent(this, MainActivity.class);
         startActivity(mainIntent);
     }
+
+    public void gotoBackCtrls(View view) {
+        Intent intent = new Intent(getApplicationContext(), Notes.class);
+        intent.putExtra("Chapter", "Back Mount");
+        intent.putExtra("SubChapter", "Controls");
+        startActivity(intent);
+    }
+
+    public void gotoBackSubs(View view) {
+        Intent intent = new Intent(getApplicationContext(), Notes.class);
+        intent.putExtra("Chapter", "Back Mount");
+        intent.putExtra("SubChapter", "Submissions");
+        startActivity(intent);
+    }
+
+    public void gotoBackCntrs(View view) {
+        Intent intent = new Intent(getApplicationContext(), Notes.class);
+        intent.putExtra("Chapter", "Back Mount");
+        intent.putExtra("SubChapter", "Submission Counters");
+        startActivity(intent);
+    }
 }

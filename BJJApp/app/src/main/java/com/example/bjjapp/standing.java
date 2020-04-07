@@ -18,4 +18,39 @@ public class standing extends AppCompatActivity {
         Intent mainIntent = new Intent(this, MainActivity.class);
         startActivity(mainIntent);
     }
+
+    public void goToStdClinch(View view) {
+        Intent intent = new Intent(getApplicationContext(), Notes.class);
+        intent.putExtra("Chapter", "Standing");
+        intent.putExtra("SubChapter", "Clinch");
+        startActivity(intent);
+    }
+
+    public void goToStdTakedowns(View view) {
+        Intent intent = new Intent(getApplicationContext(), Notes.class);
+        intent.putExtra("Chapter", "Standing");
+        intent.putExtra("SubChapter", "Takedowns");
+        startActivity(intent);
+    }
+
+    public void goToStdWeaponDef(View view) {
+        Intent intent = new Intent(getApplicationContext(), Notes.class);
+        intent.putExtra("Chapter", "Standing");
+        intent.putExtra("SubChapter", "Weapon Defences");
+        startActivity(intent);
+    }
+
+    public void goToStdFrntDef(View view) {
+        Intent intent = new Intent(getApplicationContext(), Notes.class);
+        intent.putExtra("Chapter", "Standing");
+        intent.putExtra("SubChapter", "Front Attack Defences");
+        startActivity(intent);
+    }
+
+    public void goToStdRearDef(View view) {
+        Intent intent = new Intent(getApplicationContext(), Notes.class);
+        intent.putExtra("Chapter", "Standing");
+        intent.putExtra("SubChapter", "Rear Attack Defences");
+        startActivity(intent);
+    }
 }
