@@ -48,8 +48,7 @@
             android:layout_height="50dp"
             android:contentDescription="@string/Add"
             android:onClick="goToAddNote"
-            android:src="@android:drawable/ic_input_add"></ImageButton>
-
+            android:src="@android:drawable/ic_input_add"/>
     </LinearLayout>
 
     <ListView
