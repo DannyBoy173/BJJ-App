@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ViewNote">
+
+    <LinearLayout
+        android:id="@+id/view_note_topbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="@string/Back"
+            android:onClick="goBack"
+            android:src="?attr/homeAsUpIndicator" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" >
+        </Space>
+
+        <TextView
+            android:id="@+id/note_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="Title">
+        </TextView>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" >
+        </Space>
+
+        <Space
+            android:layout_width="50dp"
+            android:layout_height="50dp" >
+        </Space>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/noteScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view_note_topbar" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/notesText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Notes" />
+
+            <TextView
+                android:id="@+id/hyperlinks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hyperlinks"
+                android:autoLink="all"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/deleteBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="@string/Delete"
+            android:src="@android:drawable/ic_menu_delete" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" >
+        </Space>
+
+        <ImageButton
+            android:id="@+id/shareBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="@string/Share"
+            android:src="@android:drawable/ic_menu_share" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" >
+        </Space>
+
+        <ImageButton
+            android:id="@+id/editBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="@string/Edit"
+            android:src="@android:drawable/ic_menu_edit" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -13,7 +13,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL_1 = "ID";
     private static final String COL_2 = "TITLE";
     private static final String COL_3 = "NOTES";
-    private static final String COL_4 = "CHAPTER_ID";
+    private static final String COL_4 = "LINKS";
+    private static final String COL_5 = "CHAPTER_ID";
 
     public DatabaseHelper(Context context) {
         super(context, TABLE_NAME, null, 1);
@@ -25,7 +26,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String CreateTable = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COL_2 + " TEXT, " +
                 COL_3 + " TEXT, " +
-                COL_4 + " INTEGER)";
+                COL_4 + " TEXT, " +
+                COL_5 + " INTEGER)";
         db.execSQL(CreateTable);
     }
 
@@ -41,14 +43,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(COL_2, "Test Title");
         values.put(COL_3, "Blah blah blah notes");
-        values.put(COL_4, 1);
+        values.put(COL_4, "Heres a link");
+        values.put(COL_5, 1);
         long newRowId = db.insert(TABLE_NAME, null, values);
     }
 
-    public Cursor getData(){
-        //retrieve data from the database
+    public Cursor getData(Integer chapterID){
+        //retrieve notes from the database relating to given chapter ID
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " +TABLE_NAME;
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE CHAPTER_ID = " + chapterID;
+        Cursor data = db.rawQuery(query, null);
+        return data;
+    }
+
+    public Cursor getNote(Integer id) {
+        //retrieve specific note data from the database
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE ID = " + id;
         Cursor data = db.rawQuery(query, null);
         return data;
     }

@@ -7,6 +7,9 @@
     <string name="Settings">Settings</string>
     <string name="Back">Back</string>
     <string name="Add">Add</string>
+    <string name="Delete">Delete</string>
+    <string name="Share">Share</string>
+    <string name="Edit">Edit</string>
     <string name="User_Guide">User Guide</string>
     <string name="Notifications">NOTIFICATIONS</string>
 
