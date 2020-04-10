@@ -18,12 +18,14 @@ public class Notes extends AppCompatActivity {
     DatabaseHelper databaseHelper;
     private ListView listView;
     private ImageButton btnAdd;
+    private ImageButton btnRefresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
 
+        btnRefresh = (ImageButton) findViewById(R.id.refreshBtn);
         btnAdd = (ImageButton) findViewById(R.id.add_btn);
         databaseHelper = new DatabaseHelper(this);
         listView = (ListView) findViewById(R.id.notesListView);
@@ -145,7 +147,16 @@ public class Notes extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                databaseHelper.addData();
+                Intent intent = new Intent(getApplicationContext(), AddNote.class);
+                intent.putExtra("chapterID", chapterID);
+                startActivity(intent);
+            }
+        });
+
+        ///when refresh button is clicked
+        btnRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 populateListView(chapterID);
             }
         });
@@ -188,6 +199,4 @@ public class Notes extends AppCompatActivity {
         finish();
     }
 
-    public void goToAddNote(View view) {
-    }
 }

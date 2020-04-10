@@ -37,14 +37,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void addData(){
-        //add data to the database
+    public void addData(String noteTitle, String notes, String links, Integer chapterID){
+        //add note to the database
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COL_2, "Test Title");
-        values.put(COL_3, "Blah blah blah notes");
-        values.put(COL_4, "Heres a link");
-        values.put(COL_5, 1);
+        values.put(COL_2, noteTitle);
+        values.put(COL_3, notes);
+        values.put(COL_4, links);
+        values.put(COL_5, chapterID);
         long newRowId = db.insert(TABLE_NAME, null, values);
     }
 

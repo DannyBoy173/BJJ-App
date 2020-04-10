@@ -47,7 +47,6 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:contentDescription="@string/Add"
-            android:onClick="goToAddNote"
             android:src="@android:drawable/ic_input_add"/>
     </LinearLayout>
 
@@ -57,7 +56,27 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/notes_topbar"
         android:layout_marginTop="0dp">
-
     </ListView>
+
+    <LinearLayout
+        android:id="@+id/refreshBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" >
+        </Space>
+
+        <ImageButton
+            android:id="@+id/refreshBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@android:drawable/ic_popup_sync" />
+
+    </LinearLayout>
 
 </RelativeLayout>
