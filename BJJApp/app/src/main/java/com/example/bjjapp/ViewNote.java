@@ -6,14 +6,13 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 
 public class ViewNote extends AppCompatActivity {
     DatabaseHelper databaseHelper;
+    private ImageButton btnDelete;
+    private ImageButton btnEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +22,12 @@ public class ViewNote extends AppCompatActivity {
         String noteTitle = new String();
         String notes = new String();
         String links = new String();
+        btnDelete = (ImageButton) findViewById(R.id.deleteBtn);
+        btnEdit = (ImageButton) findViewById(R.id.editBtn);
 
         //get the intent data to display the correct note (the note ID)
         Intent intent = getIntent();
-        Integer ID = intent.getIntExtra("NoteID",0);
+        final Integer ID = intent.getIntExtra("NoteID",0);
 
         //get the note data
         Cursor data = databaseHelper.getNote(ID);
@@ -43,9 +44,32 @@ public class ViewNote extends AppCompatActivity {
         noteText.setText(notes);
         TextView linkText = (TextView)findViewById(R.id.hyperlinks);
         linkText.setText(links);
+
+        ///when delete button is clicked
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                delete(ID);
+            }
+        });
+
+        ///when edit button is clicked
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), EditNote.class);
+                intent.putExtra("NoteID", ID);
+                startActivity(intent);
+            }
+        });
     }
 
     public void goBack(View view) {
+        finish();
+    }
+
+    public void delete(Integer ID) {
+        databaseHelper.deleteNote(ID);
         finish();
     }
 }

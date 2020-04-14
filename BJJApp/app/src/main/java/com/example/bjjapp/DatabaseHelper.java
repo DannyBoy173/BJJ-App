@@ -63,4 +63,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor data = db.rawQuery(query, null);
         return data;
     }
+    public void deleteNote(Integer id) {
+        //delete note from the DB
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "DELETE FROM " + TABLE_NAME + " WHERE ID = " + id;
+        int deletedRows = db.delete(TABLE_NAME, COL_1 + " = " + id , null);
+    }
+
+    public void editData(String noteTitle, String notes, String links, Integer id) {
+        //edit specific note in the DB
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "UPDATE " + TABLE_NAME + " SET " + COL_2 + " = '" + noteTitle +
+                "', " + COL_3 + " = '" + notes +
+                "', " + COL_4 + " = '" + links +
+                "' WHERE " + COL_1 + " = " + id;
+        db.execSQL(query);
+    }
 }
