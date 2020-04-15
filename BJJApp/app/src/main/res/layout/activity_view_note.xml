@@ -61,20 +61,34 @@
             android:orientation="vertical" >
 
             <TextView
+                android:id="@+id/noteLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Notes:" />
+
+            <TextView
                 android:id="@+id/notesText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Notes" />
 
-            <TextView
-                android:id="@+id/hyperlinks"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Hyperlinks"
-                android:autoLink="all"/>
-
         </LinearLayout>
     </ScrollView>
+
+    <TextView
+        android:id="@+id/linksLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/noteScrollView"
+        android:text="\nLinks:" />
+
+    <ListView
+        android:id="@+id/linksListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linksLabel"
+        android:layout_marginTop="0dp">
+    </ListView>
 
     <LinearLayout
         android:id="@+id/bottomBar"

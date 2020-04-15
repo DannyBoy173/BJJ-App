@@ -143,6 +143,15 @@ public class Notes extends AppCompatActivity {
             }
         });
 
+        //when the user long clicks on a note, take them straight to edit that note
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int pos, long id) {
+                goToEditNote(pos, chapterID);
+                return true;
+            }
+        });
+
         ///when add button is clicked
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,6 +170,14 @@ public class Notes extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void goToEditNote(int pos, Integer chapterID) {
+        //function which takes user to edit note screen for specific note long clicked
+        ArrayList<String> IDs = getIDs(chapterID);
+        Intent intent = new Intent(getApplicationContext(), EditNote.class);
+        intent.putExtra("NoteID", Integer.parseInt(IDs.get(pos)));
+        startActivity(intent);
     }
 
     private void goToViewNote(int position, Integer chapterID) {
