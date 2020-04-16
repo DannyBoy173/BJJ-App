@@ -196,7 +196,6 @@ public class calendar extends AppCompatActivity {
         editor.commit();
     }
 
-
     public void goToMain(View view) {
         finish();
     }
