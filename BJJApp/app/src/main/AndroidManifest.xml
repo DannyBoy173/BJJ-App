@@ -4,6 +4,7 @@
     package="com.example.bjjapp">
 
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
@@ -53,6 +54,14 @@
             tools:ignore="LockedOrientationActivity"/>
 
         <receiver android:name=".Notification_receiver" />
+        <receiver android:name=".ResetAlarmsReceiver" android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".BootService" android:enabled="true"/>
 
         <activity android:name=".MainActivity"
             android:screenOrientation="portrait"
