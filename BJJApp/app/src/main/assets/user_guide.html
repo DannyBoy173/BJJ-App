@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Using a off canvas responsive design for the user guide, modified code from: https://learn.lboro.ac.uk/mod/resource/view.php?id=506032-->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+        User Guide
+    </title>
+
+    <style type="text/css">
+    html,body,#main {
+      margin:0;
+      width:100%;
+      height:100%;
+      background-color: #E6E6FA;
+      font-size: 1.3em;
+    }
+    a#menu img {
+      width:40px;
+    }
+    .blue {
+      background-color: #8A2BE2;
+    }
+
+    #nav {
+      width:250px;
+      height:100%;
+      position:absolute;
+      transform: translate(-250px,0);
+      transition: transform 0.3s ease;
+    }
+    #nav.open {
+      transform: translate(0,0);
+    }
+
+    /*Responsive CSS for breakpoint of 600px width
+      The nav bar gets fixed in place and the button no longer displays*/
+    @media screen and (min-width:600px) {
+      body {
+        display:flex;
+      }
+      #nav {
+        position:relative;
+        transform: translate(0,0);
+      }
+/*
+      #main {
+        width:auto;
+        flex-grow:1;
+      }
+*/
+      a#menu img {
+        display:none;
+      }
+    }
+  </style>
+</head>
+<body>
+<div id="nav" class="blue">
+    <p onclick="Home()">Home</p>
+    <p onclick="DisplayIntro()">Intro</p>
+    <p onclick="DisplayNewNote()">New Note</p>
+    <p onclick="DisplayViewNote()">View Note</p>
+    <p onclick="DisplayEditNote()">Edit Note</p>
+    <p onclick="DisplayCalendar()">Calendar</p>
+</div>
+
+<div id="main">
+    <!--The menu button-->
+    <a id="menu">
+        <img src="menuIcon.webp" height="32" width="32">
+    </a>
+    <!--main contents-->
+    <p id="mainP">Welcome to the BJJ App User Guide.<br><br>Use the menu to find the info you need.</p>
+</div>
+
+<script>
+        //opens the nav menu when menu button clicked
+        var menu = document.querySelector('#menu');
+        var main = document.querySelector('#main');
+        var nav = document.querySelector('#nav');
+
+        //open nav menu
+        menu.addEventListener('click', function(e) {
+        nav.classList.toggle('open');
+        e.stopPropagation();
+        });
+
+        //close nav menu when click off of it
+        main.addEventListener('click', function() {
+        nav.classList.remove('open');
+        });
+
+        function Home() {
+            document.getElementById("mainP").innerHTML = "Welcome to the BJJ App User Guide.<br><br>Use the menu to find the info you need.";
+            nav.classList.remove('open');
+        }
+        function DisplayIntro() {
+            document.getElementById("mainP").innerHTML = "The purpose of this app is to aid you in learnning BJJ and keep track of your progress.<br><br>You can use this app to make and order notes about techniques, view them whenever you need, make updates to them and share them with others. You can also upload your training timetable to be notified of when your next training session is.";
+            nav.classList.remove('open');
+        }
+        function DisplayNewNote() {
+            document.getElementById("mainP").innerHTML = "In order to create a new note, navigate to the relevant chapter and press the green plus sign. From there you can give it a title, write your notes and add any helpful links (be sure to include 'https://')<br><br>Press the cross to discard changes, or the tick to save your note and then click the refresh button to see your new note.";
+            nav.classList.remove('open');
+        }
+        function DisplayViewNote() {
+            document.getElementById("mainP").innerHTML = "Navigate to the relevant chapter, click the title of the note you want to view, then it will display the notes you have taken as well as any helpful links, just click a link to be taken out of the app to view it.<br><br>Along the bottom are options to Delete, Share and Edit the note.";
+            nav.classList.remove('open');
+        }
+        function DisplayEditNote() {
+            document.getElementById("mainP").innerHTML = "You can edit notes from either the bottom bar when viewing the note or when you long click the title of a note. You will then be able to make any changes to the note, just press the tick once you're finished and remember to press the refresh button.";
+            nav.classList.remove('open');
+        }
+        function DisplayCalendar() {
+            document.getElementById("mainP").innerHTML = "Use the spinners to pick the day and time of your class then press the set button. This will create a notification which will go off weekly at that day and time (We recommend you set it an hour before you're actual class).<br><br>You can stop these notifications by just clicking on the reminder you want to remove.";
+            nav.classList.remove('open');
+        }
+
+    </script>
+</body>
+</html>

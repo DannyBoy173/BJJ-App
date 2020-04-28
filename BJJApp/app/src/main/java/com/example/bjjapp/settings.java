@@ -20,6 +20,7 @@ public class settings extends AppCompatActivity {
     }
 
     public void goToUserGuide(View view) {
-
+        Intent mainIntent = new Intent(this, UserGuide.class);
+        startActivity(mainIntent);
     }
 }
